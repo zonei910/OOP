@@ -79,6 +79,7 @@ public class Teacher extends User implements IInOut{
                 System.out.print("Nhap ten mon hoc: ");
                 x = sc.nextLine();
                 a.setSubjName(x);
+                subjects.add(a);
         }
     }
 
@@ -100,4 +101,31 @@ public class Teacher extends User implements IInOut{
     }
 
 
+    public void editSubj(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=====Sua thong tin mon cua giang vien=====");
+        System.out.print("Nhap ma mon muon sua: ");
+        String x = sc.nextLine();
+        int co = 0;
+        for(int i = 0 ; i<getSubjectList().size();i++){
+            if(subjects.get(i).equals(x)){
+                co = 1;
+                System.out.println("1. Sua ten mon hoc ");
+                System.out.println("2. Sua ma mon hoc");
+                System.out.print("Lua chon cua ban");
+                int chon = sc.nextInt();
+                sc.nextLine();
+                String y;
+                switch(chon){
+                    case 1:
+                        System.out.print("Nhap ten mon hoc moi: ");
+                        y = sc.nextLine();
+                }
+            
+            }
+
+        }
+
+
+}
 }

@@ -55,6 +55,7 @@ while(true){
         System.out.println("~~~~~Chao mung den voi menu cua giang vien~~~~~");
         System.out.println("1. Xem thong tin cua giang vien");
         System.out.println("2. Xem thong tin sinh vien");
+        System.out.println("3. Xem danh sach mon hoc");
         System.out.println("3. Tao bai thi");
         System.out.print("Lua chon cua ban: ");
         int chon = sc.nextInt();
@@ -94,21 +95,18 @@ while(true){
                             sc.nextLine();
                             switch(chonsuathongtin){
                                 case 1:
-                                for(int i = 1 ; i<=50;i++) System.out.println("");
                                 System.out.print("Nhap ID moi: ");
                                 x = sc.nextLine();
                                 teacher.setID(x);
                                 danhsachUser.exportFile();
                                 break;
                                 case 2:
-                                for(int i = 1 ; i<=50;i++) System.out.println("");
                                 System.out.print("Nhap ten moi: ");
                                 x = sc.nextLine();
                                 teacher.setUsername(x);
                                 danhsachUser.exportFile();
                                 break;
                                 case 3:
-                                for(int i = 1 ; i<=50;i++) System.out.println("");
                                 System.out.print("Nhap mat khau moi: ");
                                 x = sc.nextLine();
                                 teacher.setPassword(x);
@@ -163,7 +161,75 @@ while(true){
                                     danhsachUser.exportFile();
                                     break;
                                 case 2:
+                                    System.out.print("Nhap ma giang vien muon sua: ");
+                                    String teacherupdate = sc.nextLine();
+                                    int coo = 0;
+                                    for(int i=1;i<=50;i++) System.out.println("");
+                                    for(int i = 0 ;i<danhsachUser.getListUser().size();i++){
+                                        if(danhsachUser.getListUser().get(i).getID().equals(teacherupdate)){
+                                            coo = 1;
+                                            System.out.println("=====Sua thong tin=====");
+                                            danhsachUser.getListUser().get(i).export();
+                                            System.out.println("Chon thong tin can sua");
+                                            System.out.println("1. ID");
+                                            System.out.println("2. Ten");
+                                            System.out.println("3. Mat khau");    
+                                            System.out.println("4. Them mon giang day");
+                                            System.out.println("5. Xoa mon giang day");                
+                                            System.out.print("Lua chon cua ban: ");
+                                            int chonsuathongtin = sc.nextInt();
+                                            sc.nextLine();
+                                            switch(chonsuathongtin){
+                                                case 1:
+                                                System.out.print("Nhap ID moi: ");
+                                                String x = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).setID(x);
+                                                danhsachUser.exportFile();
+                                                break;
+                                                case 2:
+                                                System.out.print("Nhap ten moi: ");
+                                                x = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).setUsername(x);
+                                                danhsachUser.exportFile();
+                                                break;
+                                                case 3:
+                                                System.out.print("Nhap mat khau moi: ");
+                                                x = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).setPassword(x);
+                                                danhsachUser.exportFile();
+                                                break;
+                                                default:
+                                                System.out.print("Ban nhap sai vui long nhap lai");
+                                                break;
+                                                case 4:
                                     
+                                                Subject subadd = new Subject();
+                                                subadd.enter();
+                                                danhsachUser.getListUser().get(i).addSubjectToTeacher(subadd);
+                                                danhsachUser.exportFile();
+                                                break;
+                                                    case 5:
+                                                System.out.print("Nhap ma so mon hoc can xoa: ");
+                                                String subremove = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).removeSubjectFromTeacher(subremove);
+                                                danhsachUser.exportFile();
+                                                break;    
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if(coo == 0) System.out.println("Khong tim thay giang vien co ID nhu ban vua nhap");
+                                    break;
+                                    case 3:
+                                        System.out.print("Nhap ma giang vien muon xoa");
+                                        String teacherRemove = sc.nextLine();
+                                        danhsachUser.deleteUser(teacherRemove);
+                                        danhsachUser.exportFile();   
+                                        break;
+                                                                  
+                                    default:
+                                        System.out.println("Nhap sai");
+                                        break;
                             }
                         }
             }
@@ -197,7 +263,7 @@ while(true){
 
 
     }
-
+    continue;
 }
 
 

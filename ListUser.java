@@ -56,7 +56,11 @@ public class ListUser{
                     System.out.println("1 .ID");
                     System.out.println("2. Ten");
                     System.out.println("3. Mat khau");
-                    System.out.println("4. ");
+                    System.out.println("4. Sua thong tin mon");
+                    System.err.print("Lua chon cua ban: ");
+                    int chon1 = sc.nextInt();
+                    
+                    
                 }
 
 

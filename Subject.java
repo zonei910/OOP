@@ -75,5 +75,12 @@ public class Subject implements IInOut{
         System.out.println("Trang thai mon hoc cua sinh vien: "+status);
         }
 
+    public void edit(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=====Sua thong tin mon=====");
+        System.out.print("Nhap ma mon muon sua: ");
+        String x = sc.nextLine();
+   
+    }
 
 }
