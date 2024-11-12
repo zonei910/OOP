@@ -61,7 +61,6 @@ public class Subject implements IInOut{
 
     public void enter(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Subject information");
         System.out.print("Nhap ten mon hoc: ");
         subjname = sc.nextLine();
         System.out.print("Nhap ma mon hoc: ");
@@ -71,16 +70,8 @@ public class Subject implements IInOut{
     public void export(){
         System.out.println("Ten mon hoc: " + subjname);
         System.out.println("Ma mon hoc: "+mssubj);
-        System.out.println("Diem mon hoc cua sinh vien: "+point);
-        System.out.println("Trang thai mon hoc cua sinh vien: "+status);
         }
 
-    public void edit(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("=====Sua thong tin mon=====");
-        System.out.print("Nhap ma mon muon sua: ");
-        String x = sc.nextLine();
-   
-    }
+  
 
 }

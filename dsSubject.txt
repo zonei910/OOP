@@ -1,6 +1,20 @@
-1,Co So Lap Trinh
-2,Ky Thuat Lap Trinh
-3,Co So Du lieu
-4,Lap Trinh Web
-5,Lap Trinh Huong Doi Tuong
-6,hehe
+1,Toan cao cap
+2,Lap trinh co ban
+3,Cau truc du lieu va giai thuat
+4,He dieu hanh
+5,Mang may tinh
+6,Ky thuat lap trinh
+7,He quan tri co so du lieu
+8,Ly thuyet do thi
+9,Phan tich va thiet ke he thong
+10,Ky thuat phan mem
+11,Cong nghe phan cung
+12,Lap trinh huong doi tuong
+13,Khoa hoc du lieu
+14,An ninh mang
+15,Kien truc may tinh
+16,Tri tue nhan tao
+17,Phat trien ung dung di dong
+18,Lap trinh Web
+19,Quan ly du an phan mem
+20,Tinh toan song song

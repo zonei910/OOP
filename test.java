@@ -3,15 +3,13 @@ import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) throws IOException{
-        ListUser a = new ListUser();
+       ListSubject a = new ListSubject();
 
-        Student b = new Student();
-        b.enter();
-        a.addStudent(b);
+       a.enterFile();
 
-        a.export();
+       a.addSubject();
 
-        a.exportFile();
+    
 
 
 
