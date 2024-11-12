@@ -1,0 +1,53 @@
+SinhVien,125,Trang,101
+1,Co so lap trinh,1,9.5
+2,Ky thuat lap trinh,2,8.0
+
+SinhVien,126,An,102
+1,Toan cao cap,1,7.5
+2,Co so du lieu,2,9.0
+
+SinhVien,127,Linh,103
+1,Thiet ke web,1,10.0
+2,An toan thong tin,2,8.5
+
+SinhVien,128,Tu,104
+1,Phan tich thiet ke,1,6.5
+2,He dieu hanh,2,7.0
+
+SinhVien,129,Hao,105
+1,Co so lap trinh,1,8.0
+2,Ky thuat lap trinh,2,9.5
+
+SinhVien,130,Quynh,106
+1,Toan cao cap,1,9.0
+2,Co so du lieu,2,10.0
+
+SinhVien,131,Phong,107
+1,Thiet bi di dong,1,8.5
+2,Phat trien phan mem,2,7.5
+
+GiangVien,132,Ha,108,0
+1,Toan cao cap
+100,hihi
+
+GiangVien,133,Lan,109,0
+1,Co so lap trinh
+
+GiangVien,134,Thai,110,0
+1,Ky thuat lap trinh
+
+GiangVien,135,Tuan,111,0
+1,Co so du lieu
+
+GiangVien,136,Ngoc,112,0
+1,Thiet ke web
+
+GiangVien,137,Son,113,0
+1,An toan thong tin
+
+GiangVien,138,Khoa,114,0
+1,Phan tich thiet ke
+
+GiangVien,139,My,115,1
+1,He dieu hanh
+

@@ -1,0 +1,15 @@
+SinhVien,125,Trang,101
+SinhVien,126,An,102
+SinhVien,127,Linh,103
+SinhVien,128,Tu,104
+SinhVien,129,Hao,105
+SinhVien,130,Quynh,106
+SinhVien,131,Phong,107
+GiangVien,132,Ha,108
+GiangVien,133,Lan,109
+GiangVien,134,Thai,110
+GiangVien,135,Tuan,111
+GiangVien,136,Ngoc,112
+GiangVien,137,Son,113
+GiangVien,138,Khoa,114
+GiangVien,139,My,115
