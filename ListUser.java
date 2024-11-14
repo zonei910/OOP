@@ -127,8 +127,8 @@ public class ListUser{
                 list.remove(i);
             }
         }
-        if(co == 0) System.out.println("Cannot find any ID you wanna delete");
-        else System.out.println("User you want to delete was deleted");
+        if(co == 0) System.out.println("Khong the tim thay giang vien can xoa");
+        else System.out.println("Giang vien da bi xoa");
     }
 
     // public void findUser(String ms){
