@@ -16,6 +16,7 @@ public class App{
         Student a = new Student();
         Teacher b  = new Teacher();
         int co;
+do{
 do{     
     co = 0;
     System.out.println("~~~~~Dang Nhap~~~~~");
@@ -42,7 +43,8 @@ do{
 
 while(true){
     //Menu của teacher
-    if(a.getID() == "" && b instanceof Teacher){
+    int menuGV = 0;
+    if(a.getID() == "" && b instanceof Teacher){ 
         Teacher teacher = new Teacher();
         for(int i = 0 ; i < danhsachUser.getListUser().size();i++){
             if(danhsachUser.getListUser().get(i).getID().equals(b.getID())){
@@ -51,36 +53,52 @@ while(true){
         }
         teacher = b;
         for(int i = 1 ; i<=50;i++) System.out.println("");
+        int co1 = 0;
+        do{
         System.out.println("~~~~~Chao mung den voi menu cua giang vien~~~~~");
         System.out.println("1. Xem thong tin cua giang vien");
         System.out.println("2. Xem thong tin sinh vien");
         System.out.println("3. Xem danh sach mon hoc");
-        System.out.println("3. Tao bai thi");
+        System.out.println("4. Xem danh sach de thi");
+        System.out.println("5. Thoat dang nhap");
         System.out.print("Lua chon cua ban: ");
         int chon = sc.nextInt();
         sc.nextLine();
         switch(chon){
             case 1:
+            int co2 = 0;
+        do{
             for(int i = 1 ; i<=50;i++) System.out.println("");
             System.out.println("Ban muon Xem thong tin gi");
             System.out.println("1. Xem thong tin cua ban");
             System.out.println("2. Xem thong tin cua tat ca giang vien");
+            System.out.println("3. Quay lai menu chinh");
+            System.out.println("4. Thoat dang nhap");
             System.out.print("Lua chon cua ban: ");
             int chon1 = sc.nextInt();
-
+            sc.nextLine();
             switch(chon1){
                 case 1:
+                int co3 = 0;
+                do{
                 for(int i = 1 ; i<=50;i++) System.out.println("");
                     System.out.println("=====Thong tin=====");
                     teacher.export();
+                    ListUser info_me = new ListUser();
+                    info_me.setListUser(danhsachUser.getListUser());
+                    info_me.listMe(teacher.getID());
                     System.out.println("1. Sua thong tin");
                     System.out.println("2. Them mon");
                     System.out.println("3. Xoa mon");
+                    System.out.println("4. Quay lai");
+                    System.out.println("5. Thoat dang nhap");
                     System.out.print("Lua chon cua ban: ");
                     int chonthongtin = sc.nextInt();
                     sc.nextLine();
                     switch(chonthongtin){
                         case 1:
+                        int co4 = 0;
+                        do{
                         for(int i = 1 ; i<=50;i++) System.out.println("");
                             String x;
                             System.out.println("=====Sua thong tin=====");
@@ -88,33 +106,50 @@ while(true){
                             System.out.println("1. ID");
                             System.out.println("2. Ten");
                             System.out.println("3. Mat khau");
-                            
+                            System.out.println("4. Quay lai");
+                            System.out.println("5. Thoat dang nhap");
                             System.out.print("Lua chon cua ban: ");
                             int chonsuathongtin = sc.nextInt();
                             sc.nextLine();
+                            
                             switch(chonsuathongtin){
                                 case 1:
                                 System.out.print("Nhap ID moi: ");
                                 x = sc.nextLine();
                                 teacher.setID(x);
-                                danhsachUser.exportFile();
+                                info_me.listMe(teacher.getID());
                                 break;
                                 case 2:
                                 System.out.print("Nhap ten moi: ");
                                 x = sc.nextLine();
                                 teacher.setUsername(x);
-                                danhsachUser.exportFile();
+                                info_me.listMe(teacher.getID());
                                 break;
                                 case 3:
                                 System.out.print("Nhap mat khau moi: ");
                                 x = sc.nextLine();
                                 teacher.setPassword(x);
-                                danhsachUser.exportFile();
+                                info_me.listMe(teacher.getID());
                                 break;
+                                case 5:
+                                    co1 =1;
+                                    co2 = 1;
+                                    co3 = 1;
+                                    co4 = 1;
+                                    menuGV = 1;
+                                    break;
+                                case 4:
+                                    co1 = 0;
+                                    co2 = 0;
+                                    co3 = 0;
+                                    menuGV = 0;
+                                    co4 = 1;
+                                    break;
                                 default:
                                 System.out.print("Ban nhap sai vui long nhap lai");
                                 break;
                             }
+                        }while(co4 == 0);
                             break;
                         case 2:
                         for(int i = 1 ; i<=50;i++) System.out.println("");
@@ -130,22 +165,40 @@ while(true){
                                 teacher.removeSubject(subremove);
                                 danhsachUser.exportFile();
                                 break;
+                        case 4:
+                            co2 = 0;
+                            menuGV = 0;
+                            co1 = 0;
+                            co3 = 1;
+                            break;
+                        case 5:
+                            co2 = 1;
+                            co1 = 1;
+                            co3 = 1;
+                            menuGV = 1;
+                            break;
                         default:
                             System.out.println("Nhap sai");
                             break;
                     }
+
+                 }while(co3 == 0); 
                     break;
                     case 2:
+                        int co5 = 0;
+                        do{
                         for(int i=1;i<=50;i++) System.out.println("");
                         System.out.println("=====Danh sach giang vien=====");
                         ListUser danhsachGiangVien = new ListUser();
-                            danhsachGiangVien.enterFile();
+                            danhsachGiangVien.setListUser(danhsachUser.getListUser());
                             danhsachGiangVien.listTeacher();
                         if(teacher.getPer() == 1){
                             System.out.println("===Quan ly danh sach giang vien===");
                             System.out.println("1. Them moi giang vien");
                             System.out.println("2. Sua thong tin giang vien");
-                            System.out.println("3. Xoa giang vien");    
+                            System.out.println("3. Xoa giang vien");   
+                            System.out.println("4. Quay lai");
+                            System.out.println("5. Thoat dang nhap"); 
                             System.out.print("Lua chon cua ban: ");
                             int chonquanlydanhsach = sc.nextInt();
                             sc.nextLine();
@@ -155,8 +208,11 @@ while(true){
                                     addTeacher.enter();
                                     danhsachUser.addTeacher(addTeacher);
                                     danhsachGiangVien.addTeacher(addTeacher);
+                                    danhsachGiangVien.listTeacher();
                                     break;
                                 case 2:
+                                int co6 = 0;
+                                do{
                                     System.out.print("Nhap ma giang vien muon sua: ");
                                     String teacherupdate = sc.nextLine();
                                     int coo = 0;
@@ -171,7 +227,9 @@ while(true){
                                             System.out.println("2. Ten");
                                             System.out.println("3. Mat khau");    
                                             System.out.println("4. Them mon giang day");
-                                            System.out.println("5. Xoa mon giang day");                
+                                            System.out.println("5. Xoa mon giang day");    
+                                            System.out.println("6. Quay lai");
+                                            System.out.println("7. Thoat dang nhap");            
                                             System.out.print("Lua chon cua ban: ");
                                             int chonsuathongtin = sc.nextInt();
                                             sc.nextLine();
@@ -183,24 +241,24 @@ while(true){
                                                 String x = sc.nextLine();
                                                 danhsachUser.getListUser().get(i).setID(x);
                                                 danhsachGiangVien.getListUser().get(i).setID(x);
-                                                danhsachGiangVien.exportFile();
+                                                danhsachGiangVien.listTeacher();
                                                     }
                                                 break;
                                                 case 2:
                                                 System.out.print("Nhap ten moi: ");
                                                 String y = sc.nextLine();
                                                 danhsachUser.getListUser().get(i).setUsername(y);
-                                                danhsachUser.exportFile();
+                                                danhsachGiangVien.getListUser().get(i).setUsername(y);
+                                                danhsachGiangVien.listTeacher();
                                                 break;
                                                 case 3:
                                                 System.out.print("Nhap mat khau moi: ");
                                                 String z = sc.nextLine();
                                                 danhsachUser.getListUser().get(i).setPassword(z);
-                                                danhsachUser.exportFile();
+                                                danhsachGiangVien.getListUser().get(i).setPassword(z);
+                                                danhsachGiangVien.listTeacher();
                                                 break;
-                                                default:
-                                                System.out.print("Ban nhap sai vui long nhap lai");
-                                                break;
+                                                
                                                 case 4:
                                     
                                                 Subject subadd = new Subject();
@@ -213,58 +271,109 @@ while(true){
                                                 danhsachUser.getListUser().get(i).removeSubject(subremove);
                                                 danhsachUser.exportFile();
                                                 break;    
+
+                                                    case 6:
+                                                        co5 = 0;
+                                                        co6 = 1;
+                                                        break;
+                                                    case 7:
+                                                        co1 = 1;
+                                                        co2 = 1;
+                                                        co3 = 1;
+                                                        co5 = 1;
+                                                        co6 = 1;
+                                                        break;
+                                                default:
+                                                System.out.print("Vui long nhap lai");
+                                                break;
+                                        
                                             }
-                                            break;
+
                                         }
                                     }
                                     if(coo == 0) System.out.println("Khong tim thay giang vien co ID nhu ban vua nhap");
+                                }while(co6 == 0);
                                     break;
+                                    //
+
+
+
                                     case 3:
                                         System.out.print("Nhap ma giang vien muon xoa");
                                         String teacherRemove = sc.nextLine();
-                                        danhsachUser.deleteUser(teacherRemove);
-                                        danhsachUser.exportFile();   
+                                        danhsachUser.deleteUser(teacherRemove); 
+                                        danhsachGiangVien.deleteUser(teacherRemove);
+                                        danhsachGiangVien.listTeacher();
                                         break;
-                                                                  
+                                    
+                                     case 4:
+                                        co1 = 0;
+                                        co2 = 0;
+                                        co5 = 1;   
+                                        menuGV = 0;
+                                        break;
+                                    case 5:
+                                        co1 = 1;
+                                        co2 = 1;
+                                        co5 = 1;
+                                        menuGV = 1;
+                                        break;
+
+
                                     default:
                                         System.out.println("Nhap sai");
                                         break;
                             }
                         }
+                        }while(co5 == 0);
+                       break;
+                case 3:
+                        co2 = 1;
+                        co1 = 0;
+                        menuGV = 0;
+                        break;
+                case 4:
+                        co1 = 1;
+                        menuGV = 1;
+                        co2 = 1;
+                        break;
+                default:
+                        System.out.println("Vui long nhap lai");
+                        break;
             }
+        
+            //
+        }while(co2 == 0);
+          break;
+          
+
             
+          
+
+
             case 5:
+                co1 = 1;
+                menuGV = 1;
                 break;
 
-            
-            case 3:
-                System.out.println("===Tao bai thi===");
-                System.out.print("Nhap ten mon thi: ");
-                
-
-
-
-
-
-
-
-
+            default:
+            System.out.println("Ban nhap khong chinh xac vui long nhap lai");
             break;
-
-        }
-
-        break;
-
-
-
-
-
-
-
     }
-    continue;
+
+        
+       
+    danhsachUser.exportFile();
+    }while(co1 == 0);
+    if(menuGV == 1) break;
+
+
 }
+    
 
 
-danhsachUser.exportFile();
+
+    break;
+}
+}while(true);
 }}

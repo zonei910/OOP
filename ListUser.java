@@ -95,12 +95,29 @@ public class ListUser{
                 for(int j = 0 ; j <list.get(i).getSubjectList().size();j++){
                     fw.write(list.get(i).getSubjectList().get(j).getID() + ","+ list.get(i).getSubjectList().get(j).getSubjName() + "\n");
                 }
-            }
                 fw.write("\n");
+            }
+            
         }
         fw.close();
     }
 
+
+    public void listMe(String ms)throws IOException{
+        File file = new File("dsUser.txt");
+        FileWriter fw = new FileWriter(file);
+        for(int i = 0 ; i < list.size() ; i++){
+            if(list.get(i) instanceof Teacher && list.get(i).getID().equals(ms)){
+                Teacher a = (Teacher)list.get(i);
+                fw.write(list.get(i).getID() + ","+list.get(i).getUsername() +","+list.get(i).getPassword()+","+a.getPer() + "\n");
+                for(int j = 0 ; j <list.get(i).getSubjectList().size();j++){
+                    fw.write(list.get(i).getSubjectList().get(j).getID() + ","+ list.get(i).getSubjectList().get(j).getSubjName() + "\n");
+                }
+                fw.write("\n");
+            }     
+        }
+        fw.close();
+    }
 
     public void deleteUser(String ms){
         int co = 0;
