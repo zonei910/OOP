@@ -85,17 +85,21 @@ public class ListUser{
     //     if(co == 0) System.out.println("List dont have any Student");
     // }
 
-    // public void listTeacher(){
-    //     int co = 0;
-    //     for(int i=0;i<list.size();i++){
-    //         if(list.get(i) instanceof Teacher){
-    //             list.get(i).export();
-    //             co = 1;
-    //             System.out.println("");
-    //         }            
-    //     }
-    //     if(co == 0) System.out.println("List dont have any Teacher");
-    // }
+    public void listTeacher() throws FileNotFoundException , IOException{
+        File file = new File("dsUser.txt");
+        FileWriter fw = new FileWriter(file);
+        for(int i = 0 ; i < list.size() ; i++){
+            if(list.get(i) instanceof Teacher){
+                Teacher a = (Teacher)list.get(i);
+                fw.write(list.get(i).getID() + ","+list.get(i).getUsername() +","+list.get(i).getPassword()+","+a.getPer() + "\n");
+                for(int j = 0 ; j <list.get(i).getSubjectList().size();j++){
+                    fw.write(list.get(i).getSubjectList().get(j).getID() + ","+ list.get(i).getSubjectList().get(j).getSubjName() + "\n");
+                }
+            }
+                fw.write("\n");
+        }
+        fw.close();
+    }
 
 
     public void deleteUser(String ms){
@@ -228,13 +232,13 @@ public class ListUser{
                 int status = Integer.parseInt(argv[2]);
                 c.setPoint(score);
                 c.setStatus(status);
-                b.addSubjectToStudent(c);
+                b.addSubject(c);
                 }
                 if(argv.length == 2){
                     Subject c = new Subject();
                     c.setID(argv[0]);
                     c.setSubjName(argv[1]);
-                    d.addSubjectToTeacher(c);
+                    d.addSubject(c);
                 }
             }
         }

@@ -67,8 +67,9 @@ public abstract class User implements IInOut{
     public abstract String getID();
     public abstract void setID(String ms);
     public abstract ArrayList<Subject> getSubjectList();
-    public abstract void addSubjectToTeacher(Subject a);
-    public abstract void removeSubjectFromTeacher(String a);
+    public abstract void addSubject(Subject a);
+    public abstract void removeSubject(String a);
+    // public abstract int getPer();
 }
 
 

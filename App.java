@@ -18,7 +18,6 @@ public class App{
         int co;
 do{     
     co = 0;
-    for(int i = 1 ; i<=50;i++) System.out.println("");
     System.out.println("~~~~~Dang Nhap~~~~~");
         System.out.print("Nhap ma so: ");
         String maso = sc.nextLine();
@@ -116,35 +115,32 @@ while(true){
                                 System.out.print("Ban nhap sai vui long nhap lai");
                                 break;
                             }
+                            break;
                         case 2:
                         for(int i = 1 ; i<=50;i++) System.out.println("");
                                 Subject subadd = new Subject();
                                 subadd.enter();
-                                teacher.addSubjectToTeacher(subadd);
+                                teacher.addSubject(subadd);
                                 danhsachUser.exportFile();
                                 break;
                         case 3:
                         for(int i = 1 ; i<=50;i++) System.out.println("");
                                 System.out.print("Nhap ma so mon hoc can xoa: ");
                                 String subremove = sc.nextLine();
-                                teacher.removeSubjectFromTeacher(subremove);
+                                teacher.removeSubject(subremove);
                                 danhsachUser.exportFile();
                                 break;
                         default:
                             System.out.println("Nhap sai");
                             break;
                     }
+                    break;
                     case 2:
                         for(int i=1;i<=50;i++) System.out.println("");
                         System.out.println("=====Danh sach giang vien=====");
                         ListUser danhsachGiangVien = new ListUser();
-                        for(int i = 0 ; i < danhsachUser.getListUser().size();i++)
-                            if(danhsachUser.getListUser().get(i) instanceof Teacher){
-                                    Teacher itemTeacher = (Teacher)danhsachUser.getListUser().get(i);
-                                    danhsachGiangVien.addTeacher(itemTeacher);
-                            }
-                        for(int i = 0 ; i < danhsachGiangVien.getListUser().size();i++)
-                            danhsachGiangVien.getListUser().get(i).export();
+                            danhsachGiangVien.enterFile();
+                            danhsachGiangVien.listTeacher();
                         if(teacher.getPer() == 1){
                             System.out.println("===Quan ly danh sach giang vien===");
                             System.out.println("1. Them moi giang vien");
@@ -158,7 +154,7 @@ while(true){
                                     Teacher addTeacher = new Teacher();
                                     addTeacher.enter();
                                     danhsachUser.addTeacher(addTeacher);
-                                    danhsachUser.exportFile();
+                                    danhsachGiangVien.addTeacher(addTeacher);
                                     break;
                                 case 2:
                                     System.out.print("Nhap ma giang vien muon sua: ");
@@ -181,21 +177,25 @@ while(true){
                                             sc.nextLine();
                                             switch(chonsuathongtin){
                                                 case 1:
+                                                for(int j = 0 ; j < danhsachGiangVien.getListUser().size();j++)
+                                                    if(danhsachGiangVien.getListUser().get(i).getID().equals(teacherupdate)){
                                                 System.out.print("Nhap ID moi: ");
                                                 String x = sc.nextLine();
                                                 danhsachUser.getListUser().get(i).setID(x);
-                                                danhsachUser.exportFile();
+                                                danhsachGiangVien.getListUser().get(i).setID(x);
+                                                danhsachGiangVien.exportFile();
+                                                    }
                                                 break;
                                                 case 2:
                                                 System.out.print("Nhap ten moi: ");
-                                                x = sc.nextLine();
-                                                danhsachUser.getListUser().get(i).setUsername(x);
+                                                String y = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).setUsername(y);
                                                 danhsachUser.exportFile();
                                                 break;
                                                 case 3:
                                                 System.out.print("Nhap mat khau moi: ");
-                                                x = sc.nextLine();
-                                                danhsachUser.getListUser().get(i).setPassword(x);
+                                                String z = sc.nextLine();
+                                                danhsachUser.getListUser().get(i).setPassword(z);
                                                 danhsachUser.exportFile();
                                                 break;
                                                 default:
@@ -205,13 +205,12 @@ while(true){
                                     
                                                 Subject subadd = new Subject();
                                                 subadd.enter();
-                                                danhsachUser.getListUser().get(i).addSubjectToTeacher(subadd);
-                                                danhsachUser.exportFile();
+                                                danhsachUser.getListUser().get(i).addSubject(subadd);
                                                 break;
                                                     case 5:
                                                 System.out.print("Nhap ma so mon hoc can xoa: ");
                                                 String subremove = sc.nextLine();
-                                                danhsachUser.getListUser().get(i).removeSubjectFromTeacher(subremove);
+                                                danhsachUser.getListUser().get(i).removeSubject(subremove);
                                                 danhsachUser.exportFile();
                                                 break;    
                                             }
@@ -234,7 +233,7 @@ while(true){
                         }
             }
             
-            case 2:
+            case 5:
                 break;
 
             
@@ -267,6 +266,5 @@ while(true){
 }
 
 
-
-}
-}
+danhsachUser.exportFile();
+}}

@@ -36,11 +36,11 @@ public class Student extends User implements IInOut{
         this.mssv = mssv;
     }
 
-    public void addSubjectToStudent(Subject a){
+    public void addSubject(Subject a){
         subjects.add(a);
     }
 
-    public void removeSubjectOfStudent(String ms){
+    public void removeSubject(String ms){
         for(int i = 0 ;i<subjects.size();i++)
             if(subjects.get(i).getID().equals(ms))
                 subjects.remove(i);

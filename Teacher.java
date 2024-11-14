@@ -28,7 +28,7 @@ public class Teacher extends User implements IInOut{
         this.msgv = teacher.getID();
     }
 
-    public void addSubjectToTeacher(Subject a){
+    public void addSubject(Subject a){
         subjects.add(a);
     }
 
@@ -36,7 +36,7 @@ public class Teacher extends User implements IInOut{
         return subjects;
     }
 
-    public void removeSubjectFromTeacher(String ms){
+    public void removeSubject(String ms){
         for(int i = 0 ; i<subjects.size();i++)
             if(subjects.get(i).getID().equals(ms))
                 subjects.remove(i);
