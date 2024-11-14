@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileWriter;
-public class ListSubject {
+public class ListSubject implements IFILE{
     private ArrayList<Subject> ds;
 
-    public ListSubject(){
+    public ListSubject() {
         ds = new ArrayList<>();
         }
     

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class ListUser{
+public class ListUser implements IFILE{
     private ArrayList<User> list;
 
     public ListUser(){
