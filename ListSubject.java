@@ -68,14 +68,14 @@ public class ListSubject implements IFILE{
         exportFile();
     }
 
-    public void export(){
+    public void export() throws FileNotFoundException{
         for (int i = 0; i < ds.size(); i++){
             ds.get(i).export();
             System.out.println("");
         }
     }
 
-    public void enterFile() throws FileNotFoundException , IOException{
+    public void enterFile() throws FileNotFoundException{
         File file = new File("dsSubject.txt");
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {

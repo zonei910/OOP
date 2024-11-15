@@ -1,11 +1,14 @@
 1,Toan cao cap
+132
 Ai la ca si so 1 VN
 Trinh Tran Phuong Tuan
 Jack
 J97
+tui
 D
 
-2,Lap trinh can ban
+2,Co so lap trinh
+142
 Ai lap trinh hay nhat
 hao
 hu

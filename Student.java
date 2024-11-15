@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -5,6 +6,7 @@ import java.util.Scanner;
 public class Student extends User implements IInOut{
     // Danh sách các môn đã , đang học => status = 1 đã học , đang thi , status = 0 chưa học
     private ArrayList<Subject>  subjects;
+    private ArrayList<Exam> exam;
     // Mã sinh viên
     private String mssv;
 
@@ -13,6 +15,7 @@ public class Student extends User implements IInOut{
         super();
         mssv = "";
         subjects = new ArrayList<Subject>();
+        exam = new ArrayList<Exam>();
     }
 
     public Student(String username, String password, String mssv , ArrayList<Subject> subjects) {
@@ -108,7 +111,7 @@ public class Student extends User implements IInOut{
 
     }
 
-    public void export(){
+    public void export() throws FileNotFoundException{
         super.export();
         for(int i = 0 ; i<subjects.size();i++){
             subjects.get(i).export();

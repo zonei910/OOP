@@ -3,17 +3,10 @@ import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) throws IOException{
-       ListSubject a = new ListSubject();
+        Exam a = new Exam();
 
-       a.enterFile();
+      a.create();
+      a.export();
 
-       a.addSubject();
-
-    
-
-
-
-
-      
     }   
 }

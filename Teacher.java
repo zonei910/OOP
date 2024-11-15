@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 public class Teacher extends User implements IInOut{
     // Mã giảng viên
@@ -83,7 +84,7 @@ public class Teacher extends User implements IInOut{
         }
     }
 
-    public void export(){
+    public void export() throws FileNotFoundException{
         super.export();
         System.out.println("Ma giang vien: "+getID());
         if(getPer() == 1){

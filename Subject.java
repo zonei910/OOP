@@ -1,6 +1,7 @@
 // Sinh vien se co list subject nen yen tam nhe
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 public class Subject implements IInOut{
     private String mssubj;
@@ -67,7 +68,7 @@ public class Subject implements IInOut{
         mssubj = sc.nextLine();
     }
 
-    public void export(){
+    public void export() throws FileNotFoundException{
         System.out.println("Ten mon hoc: " + subjname);
         System.out.println("Ma mon hoc: "+mssubj);
         }

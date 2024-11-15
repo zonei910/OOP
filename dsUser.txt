@@ -1,21 +1,21 @@
 SinhVien,125,Trang,101
-1,Co so lap trinh,1,9.5
-2,Ky thuat lap trinh,2,8.0
+2,Co so lap trinh,0,9.5
+6,Ky thuat lap trinh,0,8.0
 
 SinhVien,126,An,102
-1,Toan cao cap,1,7.5
-2,Co so du lieu,2,9.0
+1,Toan cao cap,0,7.5
+7,Co so du lieu,0,9.0
 
 SinhVien,127,Linh,103
-1,Thiet ke web,1,10.0
-2,An toan thong tin,2,8.5
+1,Thiet ke web,0,10.0
+2,An toan thong tin,0,8.5
 
 SinhVien,128,Tu,104
 1,Phan tich thiet ke,1,6.5
 2,He dieu hanh,2,7.0
 
 SinhVien,129,Hao,105
-1,Co so lap trinh,1,8.0
+2,Co so lap trinh,1,8.0
 2,Ky thuat lap trinh,2,9.5
 
 SinhVien,130,Quynh,106

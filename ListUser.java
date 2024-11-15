@@ -73,17 +73,17 @@ public class ListUser implements IFILE{
         }
     }
 
-    // public void listStudent(){
-    //     int co = 0;
-    //     for(int i=0;i<list.size();i++){
-    //         if(list.get(i) instanceof Student){
-    //             list.get(i).export();
-    //             co = 1;
-    //             System.out.println("");
-    //         }
-    //     }
-    //     if(co == 0) System.out.println("List dont have any Student");
-    // }
+    public void listStudent() throws FileNotFoundException{
+        int co = 0;
+        for(int i=0;i<list.size();i++){
+            if(list.get(i) instanceof Student){
+                list.get(i).export();
+                co = 1;
+                System.out.println("");
+            }
+        }
+        if(co == 0) System.out.println("List dont have any Student");
+    }
 
     public void listTeacher() throws FileNotFoundException , IOException{
         File file = new File("dsUser.txt");

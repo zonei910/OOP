@@ -1,4 +1,5 @@
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,7 +56,7 @@ public abstract class User implements IInOut{
     }   
 
     @Override
-    public void export(){
+    public void export() throws FileNotFoundException{
         System.out.println("Ten: " + username);
         System.out.println("Mat Khau: "+password);
     }
