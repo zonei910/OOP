@@ -11,7 +11,13 @@ public class App{
 do{
     int me = 0;
     ListUser danhsachUser = new ListUser();
+    ListSubject danhsachSubject = new ListSubject();
+    ListExam danhsachExam = new ListExam();
+    ListQuestion danhsachQuestion = new ListQuestion();
+    danhsachQuestion.enterFile();
+    danhsachExam.enterFile();
     danhsachUser.enterFile();
+    danhsachSubject.enterFile();
     Scanner sc = new Scanner(System.in);
     Student a = new Student();
     Teacher b  = new Teacher();
@@ -372,8 +378,9 @@ while(true){
             break;
     }
 
-        
-       
+    danhsachSubject.exportFile();
+    danhsachQuestion.exportFile();
+    danhsachExam.exportFile();
     danhsachUser.exportFile();
     }while(co1 == 0);
     if(menuGV == 1) break;
@@ -389,8 +396,8 @@ while(true){
         }
         student = (Student) a;
         int menuSV = 0;
+        for(int i=0;i<50;i++) System.out.println("");
         do{
-            for(int i=0;i<50;i++) System.out.println("");
         System.out.println("~~~~~Chao mung den voi menu sinh vien~~~~~");
         System.out.println("1. Xem thong tin cua ban");
         System.out.println("2. Vao thi");
@@ -410,7 +417,7 @@ while(true){
                     System.out.println("2. Doi ten");
                     System.out.println("3. Xem thong tin cac mon hoc");
                     System.out.println("4. Quay lai");
-                    System.out.println("5. THoat dang nhap");
+                    System.out.println("5. Thoat dang nhap");
                     System.out.print("Lua chon cua ban: ");
                     int chon1 = sc.nextInt();
                     sc.nextLine();
@@ -419,21 +426,17 @@ while(true){
                         System.out.print("Nhap mat khau moi: ");
                         String mkmoi = sc.nextLine();
                         student.setPassword(mkmoi);
-                        danhsachUser.getListUser().get(me).setPassword(mkmoi);
                         break;
 
                         case 2:
                         System.out.print("Nhap ten moi: ");
                         String tenmoi = sc.nextLine();
                         student.setUsername(tenmoi);
-                        danhsachUser.getListUser().get(me).setUsername(tenmoi);
                         break;
 
                         case 3:
                         student.showSubject();
                         break;
-
-
 
                         case 4:
                             co1 =1;
@@ -451,6 +454,40 @@ while(true){
                     }while(co1 == 0);
                 break;
 
+                case 2:
+                    student.viewExam();
+                    student.doExam();
+                    break;
+
+
+
+                case 3:
+                int check = 0;
+                do{
+                    int checkdupp = 0;
+                    System.out.print("Nhap ma mon muon dang ki: ");
+                    String msmon = sc.nextLine();
+                    for(int i=0;i<student.getSubjectList().size();i++){
+                        if(student.getSubjectList().get(i).equals(msmon))
+                            checkdupp = 1;
+                        
+                    }
+                    if(checkdupp == 0)
+                    for(int i = 0 ; i<danhsachSubject.getListSubject().size();i++){
+                        if(danhsachSubject.getListSubject().get(i).getID().equals(msmon)){
+                            check = 1;
+                            Subject addmon = new Subject();
+                            addmon.setPoint(0F);
+                            addmon.setID(msmon);
+                            addmon.setStatus(0);
+                            addmon.setSubjName(danhsachSubject.getListSubject().get(i).getSubjName());
+                            student.addSubject(addmon);
+                        }
+                    }
+                    else System.out.println("Mon hoc da co trong danh sach");
+                }while(check == 0);
+                System.out.println("Da dang ky mon thanh cong");
+                break;
 
                 case 4:
                     menuSV = 1;

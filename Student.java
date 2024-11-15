@@ -156,11 +156,9 @@ public class Student extends User implements IInOut{
         System.out.print("Nhap code de vao thi: ");
         String ms = sc.nextLine();
         char c;
-
+            System.out.println("");
         for(int i = 0 ; i<exam.size();i++){
             if(exam.get(i).getCode().equals(ms)){
-                Exam a = new Exam();
-                a.henshinExam(exam.get(i));
                 do{
                     int diem = 0;
                     for(int k=0;k<subjects.size();k++){
@@ -169,17 +167,18 @@ public class Student extends User implements IInOut{
                     }
 
                     for(int j = 0 ; j<exam.get(i).getListQuestion().size();j++){
-                        System.out.println( exam.get(i).getListQuestion().get(j).getQuestion());
-                        System.out.println( exam.get(i).getListQuestion().get(j).getOption_1());
-                        System.out.println( exam.get(i).getListQuestion().get(j).getOption_2());
-                        System.out.println( exam.get(i).getListQuestion().get(j).getOption_3());
-                        System.out.println( exam.get(i).getListQuestion().get(j).getOption_4());
+                        System.out.println("Cau hoi: "+ exam.get(i).getListQuestion().get(j).getQuestion());
+                        System.out.println("A. "+ exam.get(i).getListQuestion().get(j).getOption_1());
+                        System.out.println("B. "+ exam.get(i).getListQuestion().get(j).getOption_2());
+                        System.out.println("C. "+ exam.get(i).getListQuestion().get(j).getOption_3());
+                        System.out.println("D. "+exam.get(i).getListQuestion().get(j).getOption_4());
                         System.out.print("Nhap dap an cua ban: ");
                         c = sc.nextLine().charAt(0);
                         if(c ==  exam.get(i).getListQuestion().get(j).getAnswer()){
                             for(int k=0;k<subjects.size();k++){
                                 if(subjects.get(k).getID().equals(exam.get(i).getID()))
                                 subjects.get(k).setPoint(++diem);
+                                subjects.get(k).setStatus(1);
                             }
                         }       
                     }
@@ -189,6 +188,7 @@ public class Student extends User implements IInOut{
 
                 System.out.print("Ban muon ket thuc bai thi hay lam lai bai thi [1/0]: ");
                     co1 = sc.nextInt();
+                    co = 1;
                     sc.nextLine();
                 }while(co1 != 1);
             }
@@ -201,7 +201,7 @@ public class Student extends User implements IInOut{
     }while(co == 0);
     }
 
-    public void viewExam() throws FileNotFoundException{
+    public void viewExam() throws IOException{
         ListExam a = new ListExam();
         a.enterFile();
 
@@ -212,6 +212,7 @@ public class Student extends User implements IInOut{
                     System.out.println("Ma mon thi: "+a.getListExam().get(j).getID());
                     System.out.println("Ten mon thi: "+a.getListExam().get(j).getSubjName());
                     System.out.println("Code mon thi: "+a.getListExam().get(j).getCode());
+                    a.getListExam().get(j).henshinExam(a.getListExam().get(j));
                     exam.add(a.getListExam().get(j));
                 }
             }
@@ -219,7 +220,7 @@ public class Student extends User implements IInOut{
     }
 
 
-
+ 
 
 
 }

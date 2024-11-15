@@ -1,12 +1,3 @@
-1,Toan cao cap
-132
-Ai la ca si so 1 VN
-Trinh Tran Phuong Tuan
-Jack
-J97
-tui
-D
-
 2,Co so lap trinh
 142
 Ai lap trinh hay nhat
@@ -14,4 +5,22 @@ hao
 hu
 3123410098
 26
+A
+
+2,Co so lap trinh
+143
+Ai la ca si so 1 viet nam 
+J97
+Jack
+Trinh Tran Phuong Tuan
+Meo Meo
+C
+
+2,Co so lap trinh
+144
+Ai la nguoi dep trai nhat
+Tuan hao
+Hao Tuan
+Hao mac
+Mac Hao
 A

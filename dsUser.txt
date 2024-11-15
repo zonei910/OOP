@@ -1,6 +1,6 @@
 SinhVien,125,Trang,100
-2,Co so lap trinh,1,10.0
-6,Ky thuat lap trinh,1,10.0
+2,Co so lap trinh,0,0.0
+6,Ky thuat lap trinh,0,0.0
 
 SinhVien,126,An,102
 1,Toan cao cap,0,7.5
@@ -28,7 +28,7 @@ SinhVien,131,Phong,107
 
 GiangVien,132,Ha,108,0
 1,Toan cao cap
-100,hihi
+
 
 GiangVien,133,Lan,109,0
 1,Co so lap trinh
