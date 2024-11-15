@@ -8,7 +8,6 @@ public class Subject implements IInOut{
     private String subjname;
     private float point;
     private int status;
-    ArrayList<Character> choseAnswer;
   
     public Subject(){
         mssubj = "";

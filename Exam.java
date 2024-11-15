@@ -20,7 +20,7 @@ public class Exam extends Subject {
     public Exam(Exam a){
         total = a.getTotal();
         code = a.getCode();
-        question = a.getListQuestions();
+        question = a.getListQuestion();
         student = a.getListStudent();
     }
 
@@ -139,7 +139,7 @@ public class Exam extends Subject {
             return student;
         }
 
-        public ArrayList<Question> getListQuestions(){
+        public ArrayList<Question> getListQuestion(){
             return question;
         }
 
@@ -195,11 +195,10 @@ public class Exam extends Subject {
                     continue;
                 }
                 luutru.add(randomIntInRange);
-                getListQuestions().get(randomIntInRange).export();
+                getListQuestion().get(randomIntInRange).export();
                 System.out.println("");
             }
         }
-
 
 
 
