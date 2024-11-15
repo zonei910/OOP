@@ -51,18 +51,17 @@ public class ListQuestion implements IFILE{
         int co1 = 0 , co2 = 0 , co3 = 0 , co4 = 0 , co5 = 0 , co6 = 0 , co7 = 0 , co8 = 0; 
         while(sc.hasNext()){
             String line = sc.nextLine();
-        
-            
-
             if(co1 == 0){
                 String [] arr = line.split(",");
-                if(arr.length == 2){
+                if(arr.length == 2 ){
                 a.setID(arr[0]);
                 a.setSubjName(arr[1]);
                 co1 = 1;
                 }
                 continue;
             }
+
+            
             if(co2 == 0){
                 a.setIDQues(line);
                 co2 = 1;
@@ -98,12 +97,11 @@ public class ListQuestion implements IFILE{
             if(co8 == 0){
                 a.setAnswer(line.charAt(0));
                 co8 = 1;
-                ds.add(a);
+                ds.add(a); 
+                a = new Question();
                 continue;
             }
-            co1 = 0 ; co2 = 0 ; co3 = 0 ; co4 = 0 ; co5 = 0 ; co6 = 0 ; co7 = 0 ; co8 = 0;
-
-            
+            co1 = 0 ; co2 = 0 ; co3 = 0 ; co4 = 0 ; co5 = 0 ; co6 = 0 ; co7 = 0 ; co8 = 0; 
         }
     }
 

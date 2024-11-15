@@ -183,19 +183,8 @@ public class Exam extends Subject {
                 System.out.println(getListStudent().get(i).getID() + "," + getListStudent().get(i).getUsername());
             }
             System.out.println("~~~Danh sach cau hoi~~~");
-            int c = 0, d = 1; // Khoảng giá trị từ 10 đến 50 (bao gồm cả 10 và 50)
-        
-            // Sinh số nguyên ngẫu nhiên trong khoảng [a, b]
-            ArrayList<Integer> luutru = new ArrayList<Integer>();
-            for(int i = 0 ; i<total;i++){
-                int randomIntInRange = (int)(Math.random() * (d - c + 1)) + c;
-               
-                if(luutru.contains(randomIntInRange)){
-                    i--;
-                    continue;
-                }
-                luutru.add(randomIntInRange);
-                getListQuestion().get(randomIntInRange).export();
+            for(int i = 0 ; i<question.size();i++){
+                getListQuestion().get(i).export();
                 System.out.println("");
             }
         }

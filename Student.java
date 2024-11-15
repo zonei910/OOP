@@ -147,61 +147,45 @@ public class Student extends User implements IInOut{
         }
     }
 
-
     public void doExam() throws IOException{
         Scanner sc = new Scanner(System.in);
+        int n = 0;
         int co = 0;
         int co1 = 0;
         do{
-        System.out.print("Nhap code de vao thi: ");
+        System.out.print("Nhap code bai thi: ");
         String ms = sc.nextLine();
-        char c;
-            System.out.println("");
-        for(int i = 0 ; i<exam.size();i++){
-            if(exam.get(i).getCode().equals(ms)){
-                do{
-                    int diem = 0;
-                    for(int k=0;k<subjects.size();k++){
-                        if(subjects.get(k).getID().equals(exam.get(i).getID()))
-                        subjects.get(k).setPoint(diem);
-                    }
-
-                    for(int j = 0 ; j<exam.get(i).getListQuestion().size();j++){
-                        System.out.println("Cau hoi: "+ exam.get(i).getListQuestion().get(j).getQuestion());
-                        System.out.println("A. "+ exam.get(i).getListQuestion().get(j).getOption_1());
-                        System.out.println("B. "+ exam.get(i).getListQuestion().get(j).getOption_2());
-                        System.out.println("C. "+ exam.get(i).getListQuestion().get(j).getOption_3());
-                        System.out.println("D. "+exam.get(i).getListQuestion().get(j).getOption_4());
-                        System.out.print("Nhap dap an cua ban: ");
-                        c = sc.nextLine().charAt(0);
-                        if(c ==  exam.get(i).getListQuestion().get(j).getAnswer()){
-                            for(int k=0;k<subjects.size();k++){
-                                if(subjects.get(k).getID().equals(exam.get(i).getID()))
-                                subjects.get(k).setPoint(++diem);
-                                subjects.get(k).setStatus(1);
-                            }
-                        }       
-                    }
-
-
-
-
-                System.out.print("Ban muon ket thuc bai thi hay lam lai bai thi [1/0]: ");
-                    co1 = sc.nextInt();
+            for(int i=0;i<exam.size();i++)
+                if(exam.get(i).getCode().equals(ms))
+                {
+                    n = i;
                     co = 1;
-                    sc.nextLine();
-                }while(co1 != 1);
-            }
-        }
-
-
-
-
-        if(co == 0) System.out.println("Vui long nhap lai code");
-    }while(co == 0);
+                }
+                if(co == 0) System.out.println("Khong tim thay bai thi tuong ung");
+        }while(co == 0);
+        do{
+            float diem = 0;
+            exam.get(n).setStatus(0);
+           for(int i = 0 ; i<exam.get(n).getListQuestion().size();i++){
+                System.out.println("Cau hoi: "+exam.get(n).getListQuestion().get(i).getQuestion());
+                System.out.println("A. "+exam.get(n).getListQuestion().get(i).getOption_1());
+                System.out.println("B. "+exam.get(n).getListQuestion().get(i).getOption_2());
+                System.out.println("C. "+exam.get(n).getListQuestion().get(i).getOption_3());
+                System.out.println("D. "+exam.get(n).getListQuestion().get(i).getOption_4());
+                System.out.print("Lua chon cua ban: ");
+                char c = sc.nextLine().charAt(0);
+                if(Character.toUpperCase(c) == Character.toUpperCase(exam.get(n).getListQuestion().get(i).getAnswer())){
+                    exam.get(n).setStatus(1);
+                    exam.get(n).setPoint(++diem);
+                }
+            }   
+            System.out.print("Ban co muon lam lai bai thi hay khong [1/0]: ");
+            co1 = sc.nextInt();
+        }while(co1 == 0);
     }
 
     public void viewExam() throws IOException{
+        Scanner sc = new Scanner(System.in);
         ListExam a = new ListExam();
         a.enterFile();
 
@@ -216,6 +200,12 @@ public class Student extends User implements IInOut{
                     exam.add(a.getListExam().get(j));
                 }
             }
+        }
+        System.out.print("Ban co muon lam bai thi khong? [1/0]: ");
+        int x = sc.nextInt();
+        System.out.println("");
+        if(x == 1){
+            doExam();
         }
     }
 

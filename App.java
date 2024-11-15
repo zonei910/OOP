@@ -456,7 +456,6 @@ while(true){
 
                 case 2:
                     student.viewExam();
-                    student.doExam();
                     break;
 
 
