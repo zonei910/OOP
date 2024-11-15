@@ -10,13 +10,14 @@ public class Student extends User implements IInOut{
     private ArrayList<Exam> exam;
     // Mã sinh viên
     private String mssv;
-
+    private float GPA;
 
     public Student(){
         super();
         mssv = "";
         subjects = new ArrayList<Subject>();
         exam = new ArrayList<Exam>();
+        GPA = 0;
     }
 
     public Student(String username, String password, String mssv , ArrayList<Subject> subjects) {
@@ -29,6 +30,7 @@ public class Student extends User implements IInOut{
        super(student.getUsername() , student.getPassword());
         this.mssv = student.getID();
         subjects = student.getSubjectList();
+        GPA = student.getGPA();
     }
 
     @Override
@@ -65,12 +67,19 @@ public class Student extends User implements IInOut{
 
     public float getGPA(){
         float s = 0;
-        for(int i = 0 ; i < subjects.size(); i++)
-            s = s + subjects.get(i).getPoint();
-            return s/subjects.size();
+        int n = 0;
+        for(int i = 0 ; i < subjects.size(); i++){
+            if(subjects.get(i).getStatus() == 1){
+                s = s + subjects.get(i).getPoint();
+                n++;
+            }
+        }
+        return (float) s/n;
     }
 
-
+    public void setGPA(float a){
+        GPA = a;
+    }
 
   
     
@@ -114,8 +123,27 @@ public class Student extends User implements IInOut{
 
     public void export() throws FileNotFoundException{
         super.export();
+        System.out.println("Ma sinh vien: "+mssv);
         for(int i = 0 ; i<subjects.size();i++){
             subjects.get(i).export();
+        }
+        System.out.println("GPA cua sinh vien: "+getGPA());
+    }
+
+    public void showSubject(){
+        for(int i = 0 ; i<subjects.size();i++){
+            System.out.println("Ten mon hoc: "+subjects.get(i).getSubjName());
+            System.out.println("Ma mon hoc: "+subjects.get(i).getID());
+            System.out.print("Trang thai cua sinh vien: ");
+            if(subjects.get(i).getStatus() == 1) {
+                System.out.println("Da hoc");
+                System.out.println("Diem so: "+subjects.get(i).getPoint());
+            }
+            else{ 
+            System.out.println("Chua hoc");
+                System.out.println("Diem so: "+subjects.get(i).getPoint());
+            }
+            System.out.println("");
         }
     }
 

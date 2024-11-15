@@ -1,6 +1,5 @@
 
 //App của mình
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,15 +7,17 @@ import java.util.Scanner;
 import javax.sound.sampled.SourceDataLine;
 
 public class App{
-    public static void main(String[] args) throws IOException{
-        ListUser danhsachUser = new ListUser();
-        danhsachUser.enterFile();
-        Scanner sc = new Scanner(System.in);
-        Student a = new Student();
-        Teacher b  = new Teacher();
-        int co;
+    public static void main(String[] args) throws IOException{ 
 do{
+    int me = 0;
+    ListUser danhsachUser = new ListUser();
+    danhsachUser.enterFile();
+    Scanner sc = new Scanner(System.in);
+    Student a = new Student();
+    Teacher b  = new Teacher();
+    int co;
 do{     
+    for(int i=0;i<50;i++) System.out.println("");
     co = 0;
     System.out.println("~~~~~Dang Nhap~~~~~");
         System.out.print("Nhap ma so: ");
@@ -26,10 +27,14 @@ do{
         for(int i = 0 ; i<danhsachUser.getListUser().size();i++){
             if(maso.equals(danhsachUser.getListUser().get(i).getID()) && matKhau.equals(danhsachUser.getListUser().get(i).getPassword())){
                 co = 1;
-                if(danhsachUser.getListUser().get(i) instanceof Student)
+                if(danhsachUser.getListUser().get(i) instanceof Student){
                     a = new Student((Student) danhsachUser.getListUser().get(i));
-                if(danhsachUser.getListUser().get(i) instanceof Teacher)
+                    me = i;
+                }
+                if(danhsachUser.getListUser().get(i) instanceof Teacher){
                     b = new Teacher((Teacher) danhsachUser.getListUser().get(i));
+                    me = i;
+                }
             }
         }
         if(co == 0){
@@ -43,7 +48,7 @@ do{
 while(true){
     //Menu của teacher
     int menuGV = 0;
-    if(a.getID() == "" && b instanceof Teacher){ 
+    if(a.getID().equals("") && b instanceof Teacher){ 
         Teacher teacher = new Teacher();
         for(int i = 0 ; i < danhsachUser.getListUser().size();i++){
             if(danhsachUser.getListUser().get(i).getID().equals(b.getID())){
@@ -220,7 +225,7 @@ while(true){
                                     for(int i = 0 ;i<danhsachUser.getListUser().size();i++){
                                         if(danhsachUser.getListUser().get(i).getID().equals(teacherupdate)){
                                             coo = 1;
-                                            System.out.println("=====Sua thong tin=====");
+                                            System.out.println("=====Quan ly thong tin=====");
                                             danhsachUser.getListUser().get(i).export();
                                             System.out.println("Chon thong tin can sua");
                                             System.out.println("1. ID");
@@ -372,10 +377,98 @@ while(true){
     danhsachUser.exportFile();
     }while(co1 == 0);
     if(menuGV == 1) break;
-
-
 }
     
+    //menu sinh vien
+    if(b.getID().equals("") && a instanceof Student){
+        Student student = new Student();
+        for(int i = 0 ; i < danhsachUser.getListUser().size();i++){
+            if(danhsachUser.getListUser().get(i).getID().equals(a.getID())){
+                a = (Student) danhsachUser.getListUser().get(i);
+            }
+        }
+        student = (Student) a;
+        int menuSV = 0;
+        do{
+            for(int i=0;i<50;i++) System.out.println("");
+        System.out.println("~~~~~Chao mung den voi menu sinh vien~~~~~");
+        System.out.println("1. Xem thong tin cua ban");
+        System.out.println("2. Vao thi");
+        System.out.println("3. Dang ki mon");
+        System.out.println("4. Thoat dang nhap");
+        System.out.print("Lua chon cua ban: ");
+        int chon = sc.nextInt();
+        sc.nextLine();
+            switch(chon){
+                case 1:
+                int co1 = 0;
+                for(int i=0;i<50;i++) System.out.println("");
+                do{
+                    student.export();
+                    System.out.println("=====Quan ly thong tin=====");
+                    System.out.println("1. Doi mat khau");
+                    System.out.println("2. Doi ten");
+                    System.out.println("3. Xem thong tin cac mon hoc");
+                    System.out.println("4. Quay lai");
+                    System.out.println("5. THoat dang nhap");
+                    System.out.print("Lua chon cua ban: ");
+                    int chon1 = sc.nextInt();
+                    sc.nextLine();
+                    switch(chon1){
+                        case 1:
+                        System.out.print("Nhap mat khau moi: ");
+                        String mkmoi = sc.nextLine();
+                        student.setPassword(mkmoi);
+                        danhsachUser.getListUser().get(me).setPassword(mkmoi);
+                        break;
+
+                        case 2:
+                        System.out.print("Nhap ten moi: ");
+                        String tenmoi = sc.nextLine();
+                        student.setUsername(tenmoi);
+                        danhsachUser.getListUser().get(me).setUsername(tenmoi);
+                        break;
+
+                        case 3:
+                        student.showSubject();
+                        break;
+
+
+
+                        case 4:
+                            co1 =1;
+                            menuSV =0;
+                            break;
+                        case 5:
+                            co1 = 1;
+                            menuSV = 1;
+                            break;
+
+                        default:
+                            System.out.println("Vui long nhap lai");
+                            break;
+                    }
+                    }while(co1 == 0);
+                break;
+
+
+                case 4:
+                    menuSV = 1;
+                    break;
+                default:
+                    System.out.println("Vui long nhap lai");
+                    break;
+            }
+
+
+        }while(menuSV == 0);
+        danhsachUser.exportFile();
+    }
+
+
+
+
+
 
 
 
