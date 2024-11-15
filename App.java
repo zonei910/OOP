@@ -9,7 +9,6 @@ import javax.sound.sampled.SourceDataLine;
 
 public class App{
     public static void main(String[] args) throws IOException{
-
         ListUser danhsachUser = new ListUser();
         danhsachUser.enterFile();
         Scanner sc = new Scanner(System.in);

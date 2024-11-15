@@ -17,6 +17,14 @@ public class Exam extends Subject {
         code = "";
     }
 
+    public Exam(Exam a){
+        total = a.getTotal();
+        code = a.getCode();
+        question = a.getListQuestions();
+        student = a.getListStudent();
+    }
+
+
     public void addStudent(Student a){
         student.add(a);
     }
@@ -40,17 +48,58 @@ public class Exam extends Subject {
             }
         }
         ListQuestion b = new ListQuestion();
-        b.enterFile();
+        b.enterFile();  
 
         for(int i = 0 ; i<b.getListQuestion().size();i++){
             if(b.getListQuestion().get(i).getID().equals(getID())){
                 question.add(b.getListQuestion().get(i));
         }
     }
+
+
+        
+
         System.out.print("Nhap ma bai thi: ");
         code = sc.nextLine();
+        do{
         System.out.print("Nhap so luong cau hoi can tao: ");
         total = sc.nextInt();
+            if(total >= question.size()){
+                if(total == question.size()) System.out.println("Can phai nhieu hon so luong cau hoi lay ra de tranh lap cau hoi");
+                if(total > question.size()) System.out.println("Khong du cau hoi");
+            }
+        }while(total >= question.size());
+
+        }
+
+
+        public void updateExam(Exam a) throws IOException{
+            setCode(a.getCode());
+            setID(a.getID());
+            setTotal(a.getTotal());
+            ListUser b = new ListUser();
+            b.enterFile();
+            
+            for(int i = 0 ; i<b.getListUser().size();i++){
+                for(int j = 0 ; j<b.getListUser().get(i).getSubjectList().size();j++){
+                        if(b.getListUser().get(i).getSubjectList().get(j).getID().equals(getID()) && b.getListUser().get(i).getSubjectList().get(j).getStatus() == 0){
+                            Student c = new Student();
+                            c = (Student) b.getListUser().get(i);
+                            student.add(c);
+                        }
+                }
+            }
+
+            ListQuestion c = new ListQuestion();
+            c.enterFile();  
+    
+            for(int i = 0 ; i<c.getListQuestion().size();i++){
+                if(c.getListQuestion().get(i).getID().equals(getID())){
+                    question.add(c.getListQuestion().get(i));
+            }
+        }
+
+
 
         }
 
@@ -104,11 +153,23 @@ public class Exam extends Subject {
                 System.out.println(getListStudent().get(i).getID() + "," + getListStudent().get(i).getUsername());
             }
             System.out.println("~~~Danh sach cau hoi~~~");
+            int c = 0, d = 1; // Khoảng giá trị từ 10 đến 50 (bao gồm cả 10 và 50)
+        
+            // Sinh số nguyên ngẫu nhiên trong khoảng [a, b]
+            ArrayList<Integer> luutru = new ArrayList<Integer>();
             for(int i = 0 ; i<total;i++){
-                getListQuestions().get(i).export();
+                int randomIntInRange = (int)(Math.random() * (d - c + 1)) + c;
+               
+                if(luutru.contains(randomIntInRange)){
+                    i--;
+                    continue;
+                }
+                luutru.add(randomIntInRange);
+                getListQuestions().get(randomIntInRange).export();
                 System.out.println("");
             }
         }
+
 
 
 
