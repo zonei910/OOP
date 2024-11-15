@@ -29,7 +29,6 @@ SinhVien,131,Phong,107
 GiangVien,132,Ha,108,0
 1,Toan cao cap
 
-
 GiangVien,133,Lan,109,0
 1,Co so lap trinh
 

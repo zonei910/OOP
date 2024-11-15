@@ -456,8 +456,8 @@ while(true){
 
                 case 2:
                     student.viewExam();
+                    danhsachUser.exportFile();
                     break;
-
 
 
                 case 3:

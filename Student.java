@@ -151,7 +151,7 @@ public class Student extends User implements IInOut{
         Scanner sc = new Scanner(System.in);
         int n = 0;
         int co = 0;
-        int co1 = 0;
+        int co1 = 1;
         do{
         System.out.print("Nhap code bai thi: ");
         String ms = sc.nextLine();
@@ -173,15 +173,19 @@ public class Student extends User implements IInOut{
                 System.out.println("C. "+exam.get(n).getListQuestion().get(i).getOption_3());
                 System.out.println("D. "+exam.get(n).getListQuestion().get(i).getOption_4());
                 System.out.print("Lua chon cua ban: ");
-                char c = sc.nextLine().charAt(0);
+                char c = sc.next().charAt(0);
                 if(Character.toUpperCase(c) == Character.toUpperCase(exam.get(n).getListQuestion().get(i).getAnswer())){
-                    exam.get(n).setStatus(1);
-                    exam.get(n).setPoint(++diem);
+                    for(int j=0;j<subjects.size();j++){
+                        if(subjects.get(j).getID().equals(exam.get(n).getListQuestion().get(i).getID())){
+                            subjects.get(j).setStatus(1);
+                            subjects.get(j).setPoint(++diem);
+                        }
+                    }
                 }
             }   
             System.out.print("Ban co muon lam lai bai thi hay khong [1/0]: ");
             co1 = sc.nextInt();
-        }while(co1 == 0);
+        }while(co1 == 1);
     }
 
     public void viewExam() throws IOException{
