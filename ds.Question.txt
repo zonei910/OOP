@@ -1,9 +1,14 @@
-1,Toan cao cap
-1
-1
-1
-1
-1
-1
-1
+2,Co so lap trinh
+Ai la ca si so 1 viet nam 
+J97
+Jack
+Trinh Tran Phuong Tuan
+Meo Meo
+C
 
+2,Co so lap trinh
+Ai bo con
+J97
+Jack
+Trinh Tran Phuong Tuan
+Meo Meo

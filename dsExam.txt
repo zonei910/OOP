@@ -1,13 +1,1 @@
-2,Co so lap trinh
-100
-125,Trang
-127,Linh
-2,Co so lap trinh
-142
-Ai lap trinh hay nhat
-hao
-hu
-3123410098
-26
-A
-
+2,Co so lap trinh,100,1

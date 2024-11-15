@@ -1,4 +1,6 @@
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,6 +25,14 @@ public class ListExam {
     }
 
     public void addExam(Exam a){
+        // int co = 1;
+        // for(int i=0;i<ds.size();i++)
+        //     if(ds.get(i).getCode().equals(a.getCode())){
+        //         co = 0;
+        //         System.out.println("Vui long tao bai thi voi ma code khac");
+        //     }
+
+        // if(co == 1)
         ds.add(a);
     }
 
@@ -82,6 +92,43 @@ public class ListExam {
     }
 
     
+    public void export() throws FileNotFoundException{
+        for(int i = 0 ; i<ds.size();i++){
+            ds.get(i).export();
+        }
+    }
+
+
+    public void enterFile() throws FileNotFoundException{
+        File file = new File("dsExam.txt");
+        Scanner sc = new Scanner(file);
+        while(sc.hasNext()){
+            String line = sc.nextLine();
+            String arr [] = line.split(",");
+            Exam a = new Exam();
+            a.setID(arr[0]);
+            a.setSubjName(arr[1]);
+            a.setCode(arr[2]);
+            a.setTotal(Integer.parseInt(arr[3]));
+            ds.add(a);
+        }
+    }
+
+    public void exportFile() throws IOException{
+        File file = new File("dsExam.txt");
+        FileWriter fw = new FileWriter(file);
+        ListSubject a = new ListSubject();
+        a.enterFile();
+        for(int i = 0 ; i <ds.size();i++){
+            fw.write(ds.get(i).getID()+",");
+            for(int j = 0 ; j<a.getListSubject().size();j++){
+                if(ds.get(i).getID().equals(a.getListSubject().get(j).getID()))
+                fw.write(a.getListSubject().get(j).getSubjName()+","+ds.get(i).getCode()+","+ds.get(i).getTotal()+"\n");
+            }
+        }
+        fw.close();
+    }
+
 
 
 }

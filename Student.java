@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -117,6 +118,58 @@ public class Student extends User implements IInOut{
             subjects.get(i).export();
         }
     }
+
+
+    public void doExam() throws IOException{
+        Scanner sc = new Scanner(System.in);
+        int co = 0;
+        int co1 = 0;
+        do{
+        System.out.print("Nhap code de vao thi: ");
+        String ms = sc.nextLine();
+        char c;
+        for(int i = 0 ; i<exam.size();i++){
+            if(exam.get(i).getCode().equals(ms)){
+                Exam a = new Exam();
+                a.henshinExam(exam.get(i));
+                do{
+
+
+
+
+
+                System.out.print("Ban co muon ket thuc bai thi khong [0/1]: ");
+                    co1 = sc.nextInt();
+                }while(co1 != 1);
+            }
+        }
+
+
+
+
+        if(co == 0) System.out.println("Vui long nhap lai code");
+    }while(co == 0);
+    }
+
+    public void viewExam() throws FileNotFoundException{
+        ListExam a = new ListExam();
+        a.enterFile();
+
+        System.out.println("=====Cac bai thi ban co the lam=====");
+        for(int i = 0 ; i<subjects.size();i++){
+            for(int j=0;j<a.getListExam().size();j++){
+                if(subjects.get(i).getID().equals(a.getListExam().get(j).getID()) && subjects.get(i).getStatus() == 0){
+                    System.out.println("Ma mon thi: "+a.getListExam().get(j).getID());
+                    System.out.println("Ten mon thi: "+a.getListExam().get(j).getSubjName());
+                    System.out.println("Code mon thi: "+a.getListExam().get(j).getCode());
+                    exam.add(a.getListExam().get(j));
+                }
+            }
+        }
+    }
+
+
+
 
 
 }

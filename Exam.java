@@ -40,7 +40,7 @@ public class Exam extends Subject {
         
         for(int i = 0 ; i<a.getListUser().size();i++){
             for(int j = 0 ; j<a.getListUser().get(i).getSubjectList().size();j++){
-                    if(a.getListUser().get(i).getSubjectList().get(j).getID().equals(getID()) && a.getListUser().get(i).getSubjectList().get(j).getStatus() == 0){
+                    if(a.getListUser().get(i).getSubjectList().get(j).getID().equals(getID()) && a.getListUser().get(i).getSubjectList().get(j).getStatus() == 0 && a.getListUser().get(i) instanceof Student){
                         Student b = new Student();
                         b = (Student) a.getListUser().get(i);
                         student.add(b);
@@ -72,6 +72,36 @@ public class Exam extends Subject {
 
         }
 
+        
+        public void henshinExam(Exam f) throws IOException{
+            ListUser a = new ListUser();
+            a.enterFile();
+            
+            for(int i = 0 ; i<a.getListUser().size();i++){
+                for(int j = 0 ; j<a.getListUser().get(i).getSubjectList().size();j++){
+                        if(a.getListUser().get(i).getSubjectList().get(j).getID().equals(f.getID()) && a.getListUser().get(i).getSubjectList().get(j).getStatus() == 0 && a.getListUser().get(i) instanceof Student){
+                            Student b = new Student();
+                            b = (Student) a.getListUser().get(i);
+                            student.add(b);
+                        }
+                }
+            }
+
+            ListQuestion b = new ListQuestion();
+            b.enterFile();  
+    
+            for(int i = 0 ; i<b.getListQuestion().size();i++){
+                if(b.getListQuestion().get(i).getID().equals(f.getID())){
+                    question.add(b.getListQuestion().get(i));
+            }
+        }
+
+            
+
+            
+        }
+
+
 
         public void updateExam(Exam a) throws IOException{
             setCode(a.getCode());
@@ -99,7 +129,7 @@ public class Exam extends Subject {
             }
         }
 
-
+        
 
         }
 
